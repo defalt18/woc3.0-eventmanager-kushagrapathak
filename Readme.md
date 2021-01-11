@@ -8,7 +8,10 @@ Any sensitive details regarding SMTP have been removed.
 
 Features : 
 
-A typical evenet manager app
+A typical event manager app
+
 Register any event with a poster 
+
 Register as a participant
+
 See the number of participants for the event you registered on the dashboard
