@@ -14,4 +14,4 @@ Register any event with a poster
 
 Register as a participant
 
-See the number of participants for the event you registered on the dashboard
+See the details of participants for the event you registered on the dashboard
