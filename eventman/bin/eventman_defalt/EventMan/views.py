@@ -66,13 +66,13 @@ def ser(request):
             send_mail(f"Successfully registered for {event_name}", 
         f" {name} , You have been successfully registered for the event : {event_name} \n Your unique participant id is : {p_id} \n Total number of people: {number} \n\n Regards \n Event Manager App by Kushagra",
         "itschloe317@gmail.com",[str(email)],fail_silently=False)
-            account_sid = 'ACbf36a044edff5a066719d3ba7374f3bc'
-            auth_token = 'a6bdeab86210366d25d1947f68680e52'
+            account_sid = 'sid'
+            auth_token = 'token'
             client = Client(account_sid, auth_token)
             message = client.messages \
                             .create(
                                 body=f"Thanks for registering with Event Manager \n Your details are : \n Name : {name} \n Unique Token ID : {p_id} \n Event Registered for : {event_name} \n Email : {email} \n \n \n Regards \n Event Manager App by Kushagra",
-                                from_="+16173908677",
+                                from_="xxxxxccc",
                                 to=f"{contact}"
                             )
             return render(request,'part_page.html',{'data':data,'cnt':data.count(),'status':'1'})
