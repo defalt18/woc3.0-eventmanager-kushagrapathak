@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participant Registration | Event Manager</title>
+</head>
+<body style="
+margin: 0px;
+">
+<div style="
+        width:100vw;
+        height:auto;
+        background: rgba(0,0,0,0.8);
+        backdrop-filter: saturate(180%) blur(10px);
+        position: fixed;
+        top:0;
+        display:flex;
+        justify-content: space-around;
+        color:white;
+        font-family: 'Helvetica',sans-serif; 
+        ">
+        <a href='/home' style="text-decoration:none;"><h3 style="color:white;font-weight:100">Home</h3></a>
+        <a href='/' style="text-decoration:none;"><h3 style="color:white;font-weight:100">Events</h3></a>
+        <a href='/participation' style="text-decoration:none;"><h3 style="color:white;font-weight:100">Participants</h3></a>
+        <a href='/login' style="text-decoration:none;"><h3 style="color:white;font-weight:100">Login</h3></a>
+</div>
+{% load static %}
+<div style="display:flex;align-items:center;">
+<div style="height:100vh;width:100vw;
+{% comment %} background: url('https://source.unsplash.com/user/erondu/1600x900'); {% endcomment %}
+background-image: url('{% static "login.jpeg" %}');
+background-size:cover;display:flex;align-items:center;font-family:'Helvetica',sans-serif;">
+     <div
+        style="
+        height : auto;
+        width: 30vw;
+        background: #111;
+        margin: auto;
+        display:flex;
+        flex-direction: column;
+        gap:10px;
+        background: rgba(0,0,0,0.7);
+        backdrop-filter: saturate(180%) blur(10px);
+        border-radius: 25px;
+        padding: 15px;
+        color:white;
+        "
+    >
+    <div style="display:flex;align-items:center;justify-content:space-evenly;width:40%;margin:auto;">
+    <h2 style="color:white; margin:0;font-size:2em;">User</h2>
+    <h2 style="margin:0;font-size:2em; color:#a1a1a6;">Login</h2>
+    </div>
+    <div id='incbox' style="background: rgba(255,55,0,0.7); width: 80%; border-radius: 10px;padding:10px; display:none; margin:auto;">
+        <h4 style="margin:0;color:white; width:100%; text-align:center;">Incorrect username or password!</h4>
+    </div>
+    <div class="formpart">
+    <form method='post' action='/showevent' style = "width:100%;display : flex;
+            flex-direction : column;
+            gap : 0.1rem;">
+    {% csrf_token %}
+    <p style="margin:0;margin-bottom:8px;">Username : </p>
+    <input type:'text' name='name' placeholder="Registered email" style="background : rgba(255,255,255,0.1); color:white;border-radius: 10px;border:0px; padding:10px;"/>
+    <p>Password : </p>
+    <input type='password' name='password' placeholder="******" style="background : rgba(255,255,255,0.1); color:white;border-radius: 10px;border:0px;padding:10px;"/>
+    <button id='but' style="font-size: medium;
+    color: white;
+    width:100%;
+    border: 0px;
+    border-radius: 10px;
+    padding:10px;
+    cursor: pointer;
+    background-color: #2997ff;
+    margin:0 auto;
+    margin-top : 20px;
+    ">
+    Login
+    </button>
+    </form>
+    </div>
+    </div>
+    </div>
+</div>
+<script>
+var t = "{{status}}";
+if (t==='-1')
+    document.getElementById('incbox').style.display='flex';
+</script>
+</body>
+</html>

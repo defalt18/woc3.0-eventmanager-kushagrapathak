@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Events | Event Manager</title>
+</head>
+<body style="
+margin: 0px;
+">
+<div style="
+        width:100vw;
+        height:auto;
+        background: rgba(0,0,0,0.7);
+        backdrop-filter: saturate(180%) blur(10px);
+        position: fixed;
+        top:0;
+        display:flex;
+        justify-content: space-around;
+        color:white;
+        font-family: 'Helvetica',sans-serif; 
+        padding:15px;
+        ">
+        <a href='/home' style="text-decoration:none;"><h3 style="color:white;margin:0;font-weight:100">Home</h3></a>
+        <a href='/' style="text-decoration:none;"><h3 style="color:white;margin:0;font-weight:100">Events</h3></a>
+        <a href='/participation' style="text-decoration:none;"><h3 style="color:white;margin:0;font-weight:100">Participants</h3></a>
+        <a href='/login' style="text-decoration:none;"><h3 style="color:white;margin:0;font-weight:100">Logout</h3></a>
+</div>
+<div style="display:flex;align-items:center;margin:auto;">
+{% load static %}
+    <div style="height:100vh;width:100vw;
+    {% comment %} background: url('https://source.unsplash.com/user/erondu/1600x900'); {% endcomment %}
+    background-image: url('{% static "shevent.jpeg" %}');
+    background-size:cover;display:flex;align-items:center;font-family:'Helvetica',sans-serif;">
+       <div id="eventdetls" style="
+        max-height : 80%;
+        width: auto;
+        background:rgba(0,0,0,0.3);
+        backdrop-filter: saturate(180%) blur(10px);
+        border-radius: 25px;
+        display:flex;
+        flex-direction:column;
+        overflow:auto;
+        align-items:center;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        font-family: 'Roboto', sans-serif;
+        padding:10px 30px;
+        ">
+        <h1 style="color: white;font-size:2em; width:100%;">Your Events ({{ecnt}})</h1>
+        {% for i in eventdata %}
+        <div style="
+            display:flex;
+            justify-content: space-between;
+            width:100%;
+            background : rgba(255,255,255,0.1);
+            margin: 5px;
+            color:white;
+            border-radius: 15px;
+            padding:10px;
+            gap : 50px;
+            ">
+            <div>
+                <h2>{{i.name}}</h2>
+                <h3>Deadline : {{i.deadline}}</h3>
+                <h3>Date : {{i.date}}</h3>
+            </div>
+            <img src={{i.link}} style="height:250px; max-width:400px; border-radius: 15px;"/>
+        </div>
+        {% endfor %}
+        </div>
+       <div id="eventdetls" style="
+        max-height : 80vh;
+        width: 40vw;
+        background:rgba(0,0,0,0.3);
+        backdrop-filter: saturate(180%) blur(10px);
+        border-radius: 25px;
+        display:flex;
+        flex-direction:column;
+        overflow:auto;
+        align-items:center;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        font-family: 'Roboto', sans-serif;
+        padding:0 30px;
+        ">
+        <h1 style="color: white;font-size:2em;">All Participants ({{cnt}})</h1>
+        <table style="width:100%; margin-bottom:20px; background : rgba(255,255,255,0.1); padding:10px; border-radius: 25px;">
+        <tr style="color:white; text-align:center; background : rgba(0,0,0,0.2);">
+        <td style="font-size:1.5em; padding:10px; border-radius: 10px;">Name</td>
+        <td style="font-size:1.5em; padding:10px; border-radius: 10px;">Contact</td>
+        <td style="font-size:1.5em; padding:10px; border-radius: 10px;">Number</td>
+        <td style="font-size:1.5em; padding:10px; border-radius: 10px;">Event Name</td>
+        </tr>
+        {% for i in data %}
+            <tr style="color:white; text-align:center;">
+            <td style="font-size:large; padding:10px; border-radius: 10px;">{{i.name}}</td>
+            <td style="font-size:large; padding:10px; border-radius: 10px;">{{i.contact}}</td>
+            <td style="font-size:large; padding:10px; border-radius: 10px;">{{i.number}}</td>
+            <td style="font-size:large; padding:10px; border-radius: 10px;">{{i.event_name}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

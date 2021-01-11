@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock title %} | Event Manager App</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<style>
+html {
+  scroll-behavior: smooth;
+}
+</style>
+</head>
+{% load static %}
+<body style="margin:0; 
+background: url('{% static "eventh.jpeg" %}') no-repeat fixed;
+  ">
+  <div style="margin:0;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  align-items : center;
+">
+    {% block head %}
+    {% endblock head %}
+    <div
+    style ="
+    background-size : cover;
+    height : 100vh;
+    width : auto;
+    margin: auto;
+    display: flex;
+    flex-wrap : wrap;
+    align-items : center;
+    gap : 2em;
+    "
+    >
+        <div class="form"
+        style="
+        width: 30vw;
+        height : 80vh;
+        margin : auto;
+        background:rgba(0,0,0,0.2);
+        backdrop-filter: saturate(180%) blur(10px);
+        background-size : cover;
+        border-radius : 20px;
+        overflow: hidden;
+        ">
+        <div class="highlight" style="
+        height: '100%';
+        width: '100%';
+        margin: 70% 5%;
+        ">
+        <h1 style="margin:0;
+        font-size: 500%;
+        color: white;
+        ">Hoping to organise an event?</h1>
+        <p onclick = "showform()" style="background:white; width:30%; text-align:center; border-radius:20px;padding:5px;cursor: pointer;">Fill the form</p>
+        </div>
+        </div>
+        <div class="form"
+        style="
+        display: none;
+        width: 30vw;
+        height : 80vh;
+        margin : auto;
+        background-color : rgba(255,255,255,0.9);
+        backdrop-filter : saturate(180%) blur(20px);
+        border-radius : 20px;
+        flex-direction : column;
+        align-items:center;
+        gap : 1em;
+        overflow: auto;
+        ">
+            <div style="margin:0;
+            padding-top: 50px;
+            padding-bottom: 20px;
+            text-align: center;
+            font-size : 50px;
+            color: white;
+            width: 100%;
+            background : url('https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8d29yayUyMGRlc2t8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&w=1000&q=80');
+            background-position : top;
+            font-family: 'Dancing Script', cursive;
+            ">Event Registrations</div>
+            <div class="forminp" style = "width:100%;">
+            <form method='post' action = '/success' style = "width:100%;display : flex;
+            flex-direction : column;
+            gap : 0.1rem;">
+            {% csrf_token %}
+                <p style="padding: 0 20px;">Event Name : 
+                <input type='text' name = "name" placeholder='Write the desired event name...' style="
+                background : transparent;
+                border : 0px solid black;
+                border-bottom : 2px solid black;
+                color : black;
+                width : 60%;
+                "/>
+                </p>
+                <p style="padding: 0 20px;">
+                Event date : 
+                <input type='text' name = "date" placeholder='YYYY-MM-DD' style="
+                background : transparent;
+                border : 0px solid black;
+                border-bottom : 2px solid black;
+                color : black;
+                width : 60%;
+                "/>
+                </p>
+                <p style="padding: 0 20px;">
+                Event description :<textarea name = "desc" placeholder= 'Describe your event in a few words...' style="
+                background : rgba(0,0,0,0.1);
+                border : 0px solid black;
+                color : black;
+                width : 95%;
+                height : 50px;
+                resize : none;
+                border-radius : 10px;
+                text-align : top;
+                font-family: 'Roboto', sans-serif;
+                padding: 10px;
+                ">
+                </textarea>
+                </p>
+                <p style="padding: 0 20px;">
+                Link to the poster :
+                <input type='text' onchange= "document.getElementsByClassName('poster')[0].src = this.value"
+                name = "link" placeholder='www.acascas.png' style="
+                background : transparent;
+                border : 0px solid black;
+                border-bottom : 2px solid black;
+                color : black;
+                width : 60%;
+                "/>
+                </p>
+                <p style="padding: 0 20px;">
+                Registration Deadline : 
+                <input type='text' name = "deadline" placeholder='YYYY-MM-DD' style="
+                background : transparent;
+                border : 0px solid black;
+                border-bottom : 2px solid black;
+                color : black;
+                width : 50%;
+                "/>
+                </p>
+                <p style="padding: 0 20px;">
+                Host Email : 
+                <input onchange= "hanch()" type='text' id='emfl' name = "email" placeholder='example@abc.com' style="
+                background : transparent;
+                border : 0px solid black;
+                border-bottom : 2px solid black;
+                color : black;
+                width : 60%;
+                "/>
+                </p>
+                <p id = 'pssfl' style="padding: 0 20px;">
+                Event Password : 
+                <input type='password' name = "password" placeholder='Your desired password' style="
+                background : transparent;
+                border : 0px solid black;
+                border-bottom : 2px solid black;
+                color : black;
+                width : 60%;
+                "/>
+                </p>
+                <div id = 'success' style="width:auto; margin:4px 50px; border-radius:10px;padding: 0 20px; background:#43bf62;display: none;">
+                    <h3 style="margin:5px 0; color:white; text-align:center; width:100%; ">You are already registered with us!</h3>
+                </div>
+                </div>
+                <button style="
+                background: #111;
+                padding: 10px;
+                border: 0px;
+                border-radius : 5px;
+                color: white;
+                font-size: medium;
+                ">Submit</button>
+            </form>
+        </div>
+        <div style="max-width: 30vw;
+        max-height : 80vh;
+        margin : auto;
+        border-radius : 20px;
+        object-fit:contain;
+        overflow: hidden;">
+        <img class="poster" src='' style="object-fit:contain;"/>
+        </div>
+        {% block body %}
+        {% endblock body %}
+    </div>
+    </div>
+    {% block eventdet %}
+    {% endblock eventdet %}
+    <script>
+        function showform() {
+            document.getElementsByClassName('form')[1].style.display = 'flex';
+            document.getElementsByClassName('form')[0].style.display = 'none';
+        }
+        function hanch() {
+            
+            document.getElementById("pssfl").style.display='flex';
+            document.getElementById("success").style.display='none';
+            var x = document.getElementById("emfl").value;
+            {% for i in data  %}
+                var k = "{{i.email}}";
+                if (k===x)
+                {
+                    document.getElementById("pssfl").style.display='none';
+                    document.getElementById("success").style.display='flex';
+                }
+            {% endfor %}
+        }
+    </script>
+  </body>
+</html>

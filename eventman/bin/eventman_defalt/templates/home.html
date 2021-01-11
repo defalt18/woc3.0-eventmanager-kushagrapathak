@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Event Manager</title>
+</head>
+<body style="margin:0">
+{% load static %}
+    <div style="
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items : center;
+    {% comment %} background-image : url('https://source.unsplash.com/random/1600x900'); {% endcomment %}
+    background-image: url('{% static "home.jpeg" %}');
+    background-position: fixed;
+    background-size : no-repeat;
+    ">
+    <div
+    style ="
+    height : 100vh;
+    width : 60%;
+    margin: auto;
+    display: flex;
+    flex-direction:column;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: saturate(180%) blur(10px);
+    font-family: 'Roboto', sans-serif;
+    color:white;
+    ">
+    <div style="margin:auto 0;">
+    <h1 style="margin:0;font-size:6em;color:white;padding: 0 30px;">Event Manager</h1>
+    <h1 style="margin:0;font-weight: 200;font-size:1.5em;color:#a1a1a6;padding: 0 40px;">Based on Python Django</h1>
+    <br><br><br><br>
+    <div style="display:flex;">
+        <div style="margin-left: 4%;padding:20px;background: rgba(0,0,0,0.8); width:40%; border-radius:15px; height:35vh;display:flex;flex-direction:column; align-items:center;justify-content:space-evenly;">
+        <h1 style="margin:0;color:white;">Developer Details</h1>
+        <h2 style="margin:0;font-weight: 200;">Name : Kushagra Pathak</h2>
+        <h2 style="margin:0;font-weight: 200;">ID : 201801005</h2>
+        <h2 style="margin:0;font-weight: 200; background: #2997ff; padding:10px; border-radius:5px; display:flex;align-items:center;gap:5px;">
+        {% load static %}
+        <img src="{% static "GitHub-Mark-Light-32px.png" %}" />
+        <a href='https://github.com/defalt18' style="text-decoration:none; color:white;">Github Profile</a></h2>
+        </div>
+        <div style=
+        "
+        margin:auto;
+        height : 35vh;
+        width : 40%;
+        background: rgba(0,0,0,0.8);
+        color: #2997ff;
+        display : flex;
+        flex-direction:column;
+        justify-content: space-evenly;
+        padding:20px;
+        border-radius : 15px;
+        text-align:center;
+        ">
+        <h1 style="margin:0;color:white;">Tasks</h1>
+        <h2 style="margin:0;font-weight: 200"><a href='/' style="text-decoration:none; color:#2997ff;">Register for an event</a></h2>
+        <h2 style="margin:0;font-weight: 200"><a href='/participation' style="text-decoration:none; color:#2997ff;">Participate</a></h2>
+        <h2 style="margin:0;font-weight: 200"><a href='/login' style="text-decoration:none; color:#2997ff;">Login</a></h2>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div
+    style ="
+    height : 100vh;
+    width : 40%;
+    margin: auto;
+    display: flex;
+    align-items :center;
+    flex-wrap : wrap;
+    align-items : center;
+    ">
+    <div class="stats" style="
+height : 80vh;
+width:30vw;
+background: rgba(255,255,255,0);
+border-radius: 25px;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:10px;
+margin:auto;
+">
+<div style=
+"
+height:50%;
+width:95%;
+background:transparent;
+border-radius: 25px;
+background-size:cover;
+position:relative;overflow:hidden;">
+<div class="con" style="position:absolute;display:flex;align-items:center;
+height:100%;
+width:100%;
+background:rgba(0,0,0,0.2);
+backdrop-filter: saturate(180%) blur(10px);
+">
+<div style="margin:auto; text-align:center;">
+<h2 style="color:white; margin:0;">Events registered till now</h2><br>
+<h1 style="color:white;margin:0;font-size:100px">{{cnt}}</h1>
+</div>
+</div>
+</div>
+<div style="
+border-radius: 25px;
+height:50%;
+width:95%;
+background:transparent;
+background-size:contain;
+position:relative;overflow:hidden;">
+<div class="con" style="position:absolute;display:flex;align-items:center;
+height:100%;width:100%;background:rgba(0,0,0,0.2);
+backdrop-filter: saturate(180%) blur(10px);
+">
+<div style="margin:auto; text-align:center;">
+<h2 style="color:white; margin:0;">Participants Registered</h2><br>
+<h1 style="color:white;margin:0;font-size:100px">{{pcnt}}</h1>
+<p style="background:transparent; width:auto; margin:8px 0;text-align:center; border-radius:5px;padding:5px;cursor: pointer;"><a href='/participation' style="text-decoration:underline;color:white;font-size:large;">Are you a participant?</a></p>
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </div>
+</body>
+</html>

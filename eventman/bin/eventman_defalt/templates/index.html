@@ -1,0 +1,122 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Registrations {% endblock title %}
+
+{% block head %}
+<div style="
+        width:100vw;
+        height:auto;
+        background: rgba(0,0,0,0.8);
+        backdrop-filter: saturate(180%) blur(10px);
+        position: fixed;
+        top:0;
+        display:flex;
+        justify-content: space-around;
+        color:white;
+        z-index: 100;
+        font-family: 'Helvetica',sans-serif; 
+        ">
+        <a href='/home' style="text-decoration:none;"><h3 style="color:white;font-weight:100">Home</h3></a>
+        <a href='/' style="text-decoration:none;"><h3 style="color:white;font-weight:100">Events</h3></a>
+        <a href='/participation' style="text-decoration:none;"><h3 style="color:white;font-weight:100">Participants</h3></a>
+        <a href='/login' style="text-decoration:none;"><h3 style="color:white;font-weight:100">Login</h3></a>
+
+</div>
+{% endblock head %}
+
+{% block body %}
+<div class="stats" style="
+height : 80vh;
+width:30vw;
+background: rgba(255,255,255,0);
+border-radius: 25px;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:10px;
+">
+<div style=
+"
+height:50%;
+width:95%;
+background:transparent;
+border-radius: 25px;
+background-size:cover;
+position:relative;overflow:hidden;">
+<div class="con" style="position:absolute;display:flex;align-items:center;
+height:100%;
+width:100%;
+background:rgba(0,0,0,0.2);
+backdrop-filter: saturate(180%) blur(10px);
+">
+<div style="margin:auto; text-align:center;">
+<h2 style="color:white; margin:0;">Events registered till now</h2><br>
+<h1 style="color:white;margin:0;font-size:100px">{{cnt}}</h1>
+<p style="background:transparent; width:auto; text-align:center; border-radius:5px;padding:5px;cursor: pointer;"><a href='#eventdetls' 
+onClick = "document.getElementById('eventdetls').style.display='flex'"
+style="text-decoration:underline;color:white;font-size:large;">See all events</a></p>
+</div>
+</div>
+</div>
+<div style="
+border-radius: 25px;
+height:50%;
+width:95%;
+background:transparent;
+background-size:contain;
+position:relative;overflow:hidden;">
+<div class="con" style="position:absolute;display:flex;align-items:center;
+height:100%;width:100%;background:rgba(0,0,0,0.2);
+backdrop-filter: saturate(180%) blur(10px);
+">
+<div style="margin:auto; text-align:center;">
+<h2 style="color:white; margin:0;">Participants Registered</h2><br>
+<h1 style="color:white;margin:0;font-size:100px">{{pcnt}}</h1>
+<p style="background:transparent; width:auto; text-align:center; border-radius:5px;padding:5px;cursor: pointer;"><a href='/participation' style="text-decoration:underline;color:white;font-size:large;">Are you a participant?</a></p>
+</div>
+</div>
+</div>
+</div>
+{% endblock body %}
+
+{% block eventdet %}
+<div id="eventdetls" style="
+        max-height : 70%;
+        width: 60%;
+        background:rgba(0,0,0,0.3);
+        backdrop-filter: saturate(180%) blur(10px);
+        display:none;
+        border-radius:25px;
+        flex-direction:column;
+        overflow:auto;
+        align-items:center;
+        margin: 20px auto;
+        font-family: 'Roboto', sans-serif;
+        padding:10px 30px;
+        ">
+        <h1 style="color: white;font-size:2em; width:100%;">All Events ({{cnt}})</h1>
+        {% for i in data %}
+        <div style="
+            display:flex;
+            justify-content: space-between;
+            width:100%;
+            background : rgba(255,255,255,0.1);
+            margin: 5px;
+            color:white;
+            border-radius: 15px;
+            padding:10px;
+            gap : 50px;
+            ">
+            <div>
+                <h2>{{i.name}}</h2>
+                <h3>Deadline : {{i.deadline}}</h3>
+                <h3>Date : {{i.date}}</h3>
+                <h3>Description</h3>
+                <p>{{i.desc}}</p>
+            </div>
+            <img src={{i.link}} style="height:300px; max-width:400px; border-radius: 15px;"/>
+        </div>
+        {% endfor %}
+        </div>
+{% endblock eventdet %}
