@@ -35,7 +35,7 @@ margin: 0px;
        <div id="eventdetls" style="
         max-height : 80%;
         width: auto;
-        background:rgba(0,0,0,0.3);
+        background:rgba(0,0,0,0.4);
         backdrop-filter: saturate(180%) blur(10px);
         border-radius: 25px;
         display:flex;
@@ -49,7 +49,8 @@ margin: 0px;
         ">
         <h1 style="color: white;font-size:2em; width:100%;">Your Events ({{ecnt}})</h1>
         {% for i in eventdata %}
-        <div style="
+        <div id = "{{i.name}}"
+        onclick = "clickhand(this.id)" style="
             display:flex;
             justify-content: space-between;
             width:100%;
@@ -59,11 +60,13 @@ margin: 0px;
             border-radius: 15px;
             padding:10px;
             gap : 50px;
+            cursor:pointer;
             ">
-            <div>
+            <div style="display:flex;flex-direction:column;justify-content:flex-start;">
                 <h2>{{i.name}}</h2>
                 <h3>Deadline : {{i.deadline}}</h3>
                 <h3>Date : {{i.date}}</h3>
+                <h4 style="margin-bottom:auto; padding:5px; background: #43bf62; border-radius:5px;">Click to show participants of this event</h4>
             </div>
             <img src={{i.link}} style="height:250px; max-width:400px; border-radius: 15px;"/>
         </div>
@@ -72,7 +75,7 @@ margin: 0px;
        <div id="eventdetls" style="
         max-height : 80vh;
         width: 40vw;
-        background:rgba(0,0,0,0.3);
+        background:rgba(0,0,0,0.4);
         backdrop-filter: saturate(180%) blur(10px);
         border-radius: 25px;
         display:flex;
@@ -84,7 +87,7 @@ margin: 0px;
         font-family: 'Roboto', sans-serif;
         padding:0 30px;
         ">
-        <h1 style="color: white;font-size:2em;">All Participants ({{cnt}})</h1>
+        <h1 id='dummy' style="color: white; font-size:2em; text-align:center;">All Participants ({{cnt}})</h1>
         <table style="width:100%; margin-bottom:20px; background : rgba(255,255,255,0.1); padding:10px; border-radius: 25px;">
         <tr style="color:white; text-align:center; background : rgba(0,0,0,0.2);">
         <td style="font-size:1.5em; padding:10px; border-radius: 10px;">Name</td>
@@ -93,7 +96,7 @@ margin: 0px;
         <td style="font-size:1.5em; padding:10px; border-radius: 10px;">Event Name</td>
         </tr>
         {% for i in data %}
-            <tr style="color:white; text-align:center;">
+            <tr class = "{{i.event_name}}" style="color:white; text-align:center;">
             <td style="font-size:large; padding:10px; border-radius: 10px;">{{i.name}}</td>
             <td style="font-size:large; padding:10px; border-radius: 10px;">{{i.contact}}</td>
             <td style="font-size:large; padding:10px; border-radius: 10px;">{{i.number}}</td>
@@ -105,5 +108,28 @@ margin: 0px;
     </div>
 </div>
 </div>
+<script>
+    var eventdet = [];
+    {% for i in eventdata %}
+        eventdet.push("{{i.name}}");
+    {% endfor %}
+
+    function clickhand(id) {
+        var p = document.getElementsByClassName(id);
+        for (let j = 0 ; j<eventdet.length ; j++)
+        {
+            var tp = document.getElementsByClassName(eventdet[j]);
+            for (let i = 0 ; i<tp.length ; i++)
+            {
+                tp[i].style.display='none';
+            }
+        }
+        for (let k = 0 ; k<p.length ; k++)
+        {
+            p[k].style.display="";
+        }
+        document.getElementById('dummy').innerHTML = "Participants of " + id + " (" + p.length + ")"
+    }
+</script>
 </body>
 </html>
