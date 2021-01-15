@@ -65,14 +65,14 @@ def ser(request):
             pregist.save()
             send_mail(f"Successfully registered for {event_name}", 
         f" {name} , You have been successfully registered for the event : {event_name} \n Your unique participant id is : {p_id} \n Total number of people: {number} \n\n Regards \n Event Manager App by Kushagra",
-        "itschloe317@gmail.com",[str(email)],fail_silently=False)
-            account_sid = 'sid'
-            auth_token = 'token'
+        "youremail@gmail.com",[str(email)],fail_silently=False)
+            account_sid = 'XXXXXXXXXXXXX'
+            auth_token = 'XXXXXXXXXXXXXXX'
             client = Client(account_sid, auth_token)
             message = client.messages \
                             .create(
                                 body=f"Thanks for registering with Event Manager \n Your details are : \n Name : {name} \n Unique Token ID : {p_id} \n Event Registered for : {event_name} \n Email : {email} \n \n \n Regards \n Event Manager App by Kushagra",
-                                from_="xxxxxccc",
+                                from_="XXXXXXXXXXXX",
                                 to=f"{contact}"
                             )
             return render(request,'part_page.html',{'data':data,'cnt':data.count(),'status':'1'})
@@ -98,7 +98,7 @@ def det(request):
         regist.save()
         send_mail(f"Successfully registered : {name}", 
         f"You have successfully completed the event registration of the event : {name} \n Your Unique Event id is : {E_id} \n Event description : \n {desc} \n Deadline : {deadline} \n Link to the poster : {link} \n Event on : {date} \n \n\n Regards \n Event Manager App by Kushagra",
-        "itschloe317@gmail.com",[str(email)],fail_silently=False)
+        "youremail@gmail.com",[str(email)],fail_silently=False)
     
     data = {
         'name':name,
