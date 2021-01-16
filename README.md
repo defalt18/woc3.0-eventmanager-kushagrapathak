@@ -25,6 +25,8 @@ All the event hosts get their own email and password for them to view the stats 
 
 For viewing participants of a particular event please click on that particular event on the left to view the details after logging in!
 
+![Preview](Screenshot 2021-01-16 at 5.12.11 PM.png?raw=true)
+
 ## Contact Keeper on Python
 
 A basic contact keeper designed on python
