@@ -8,7 +8,7 @@ Installation points :
 
 A virtual enviornment by the name of "eventman" exists so keep in mind while satisfying the other requirements
 
-Install twilio api and django api
+Install twilio api and django
 
 ## Features
 
