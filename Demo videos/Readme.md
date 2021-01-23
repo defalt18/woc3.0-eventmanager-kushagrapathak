@@ -6,5 +6,5 @@ Link : https://drive.google.com/file/d/1aq1NzuWJd30ONQe3aidJgTNHdppk0pmq/view?us
 
 Django event manager demo
 
-Link : https://drive.google.com/file/d/1kbV-5DG3xAQnXs3gwjeuutopSXKtjFjm/view?usp=sharing 
+Link : https://drive.google.com/file/d/1_zzU1gUCQM0bhLltrVOVnNFKs_Jgo6jm/view?usp=sharing
 
